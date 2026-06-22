@@ -2,7 +2,7 @@
 
 A beautiful, fast-paced, interactive web-based bubble-popping game built using vanilla HTML, CSS, and JavaScript. Test your reflexes and accuracy by matching target numbers before the timer runs out!
 
-🔗 **[Live Demo Coming Soon](#)** *(Replace this URL with your hosted link later)*
+🔗 **[Live Demo](#)** *(https://bubble-burst-alpha.vercel.app)*
 
 ---
 
