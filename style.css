@@ -1,13 +1,15 @@
-*{
+/* --- Global Resets & Typography --- */
+* {
     margin: 0;
     padding: 0;
-    font-family: Gilroy;
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     box-sizing: border-box;
 }
 
-html, body{
+html, body {
     height: 100%;
     width: 100%;
+    background-color: rgb(155, 184, 155);
 }
 
 #main {
@@ -16,64 +18,72 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(155, 184, 155);
+    padding: 10px; /* Prevents panel from touching screen edges on small devices */
 }
 
+/* --- Adaptive Game Main Panel --- */
 #panel {
     overflow: hidden;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    max-width: 1100px; /* Keeps desktop view from getting ridiculously wide */
+    height: 90vh;      /* Uses viewport heights for tight mobile scaling */
+    max-height: 800px;
     background-color: rgb(255, 255, 255);
-    border-radius: 10px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
+/* --- Responsive Top Navigation Panel --- */
 #ptop {
-    padding: 0% 30%;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: rgb(255, 255, 255);
     width: 100%;
-    height: 100px;
+    height: 90px;
     background-color: rgb(72, 104, 72);
-    /* border-bottom: 1px solid rgb(0, 0, 0); */
+    flex-shrink: 0; /* Prevents header from collapsing on small screens */
 }
 
 .elem {
-    /* width: 15%; */
     display: flex;
     align-items: center;
-    gap: 20px;
-    /* background-color: red; */
+    gap: 12px;
 }
 
 .elem h2 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
-
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .box {
-    padding: 10px 20px;
+    padding: 8px 16px;
     color: rgb(18, 119, 57);
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     background-color: rgb(255, 255, 255);
-    border-radius: 5px;
+    border-radius: 8px;
+    min-width: 45px;
+    text-align: center;
 }
 
-/* --- Updated Container Context Fix --- */
+/* --- Adaptive Bottom Bubble Grid --- */
 #pbtm {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     padding: 20px;
     width: 100%;
-    height: calc(100% - 100px);
+    height: 100%;
+    overflow-y: auto; /* Allows scrolling inside the canvas if bubbles overflow on tiny screens */
     position: relative;
-    /* Added to guarantee absolute center positioning works perfectly */
     justify-content: center; 
-    align-items: center;
+    align-content: flex-start; /* Aligns grid rows tightly from the top */
 }
 
 /* --- Optimized Elegant Bubble Theme --- */
@@ -81,32 +91,32 @@ html, body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px; /* Slightly larger for better mobile/desktop hitting */
+    width: 44px; 
     height: 44px;
     border-radius: 50%;
-    background-color: #344e41; /* Premium deep forest mint */
-    color: #ffffff; /* Crisp white text */
+    background-color: #344e41; 
+    color: #ffffff; 
     font-weight: 600;
     font-size: 16px;
-    transition: transform 0.1s ease, background-color 0.2s ease; /* Smooth hover transition */
+    transition: transform 0.1s ease, background-color 0.2s ease; 
     user-select: none;
+    -webkit-user-select: none;
 }
 
 .bubble:hover {
-    background-color: #588157; /* Light sage green on hover */
+    background-color: #588157; 
     cursor: pointer;
-    transform: scale(1.08); /* Gives a tiny 'hover pop' feel */
+    transform: scale(1.08); 
 }
 
-/* --- Fixed & Enhanced Game Over Card --- */
+/* --- Responsive & Fixed Game Over Card --- */
 .game-over-card {
     position: absolute;
-    /* Keeps it pinned directly in the center regardless of remaining bubbles */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(255, 255, 255, 0.98);
-    padding: 40px 50px;
+    padding: 35px 25px;
     border-radius: 24px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -116,14 +126,12 @@ html, body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 340px;
+    width: 85%;      /* Responsive fluid width for phones */
+    max-width: 360px; /* Caps maximum width on desktops */
     z-index: 10;
-    
-    /* Fixed Animation Call */
     animation: popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Fixed keyframe transition logic */
 @keyframes popIn {
     0% {
         opacity: 0;
@@ -136,10 +144,9 @@ html, body{
 }
 
 .trophy-icon {
-    font-size: 55px;
-    margin-bottom: 12px;
+    font-size: 50px;
+    margin-bottom: 10px;
     animation: float 2.5s ease-in-out infinite;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
 @keyframes float {
@@ -148,32 +155,31 @@ html, body{
 }
 
 .game-over-card h1 {
-    font-size: 30px;
+    font-size: 28px;
     color: #1a252f;
     margin-bottom: 6px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     font-weight: 700;
 }
 
 .final-score-text {
-    font-size: 13px;
+    font-size: 12px;
     color: #8a99a6;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .score-badge {
-    font-size: 52px;
+    font-size: 46px;
     font-weight: 800;
     color: rgb(18, 119, 57);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     background: rgba(18, 119, 57, 0.08);
     padding: 4px 35px;
     border-radius: 50px;
     display: inline-block;
-    box-shadow: inset 0 2px 4px rgba(18, 119, 57, 0.05);
 }
 
 .restart-btn {
@@ -185,21 +191,50 @@ html, body{
     color: white;
     font-size: 16px;
     font-weight: 600;
-    padding: 15px 32px;
+    padding: 14px 28px;
     border: none;
-    border-radius: 16px;
+    border-radius: 14px;
     cursor: pointer;
     transition: all 0.25s ease;
     box-shadow: 0 10px 20px rgba(72, 104, 72, 0.25);
+    width: 100%; /* Spans full card width on small displays */
 }
 
 .restart-btn:hover {
     background-color: rgb(53, 79, 53);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(72, 104, 72, 0.35);
+    transform: translateY(-2px);
 }
 
-.restart-btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 12px rgba(72, 104, 72, 0.25);
+/* --- Mobile Media Queries (Breakpoints) --- */
+@media (max-width: 600px) {
+    #panel {
+        width: 100%;
+        height: 95vh; /* Takes up most of the mobile landscape screen */
+    }
+
+    #ptop {
+        padding: 0 15px; /* Compresses top panel margins so metrics fit side-by-side */
+        height: 75px;
+    }
+
+    .elem h2 {
+        font-size: 14px; /* Drops font size so "Timer", "Hit", "Score" titles don't wrap ugly */
+    }
+
+    .box {
+        padding: 6px 12px;
+        font-size: 16px;
+        min-width: 35px;
+    }
+
+    .bubble {
+        width: 38px; /* Slightly scaled-down bubble footprints to pack clean grids on mobile web */
+        height: 38px;
+        font-size: 14px;
+    }
+    
+    #pbtm {
+        padding: 12px 8px;
+        gap: 8px; /* Tighter padding packing layouts */
+    }
 }
