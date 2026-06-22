@@ -62,28 +62,144 @@ html, body{
     border-radius: 5px;
 }
 
+/* --- Updated Container Context Fix --- */
 #pbtm {
     display: flex;
     flex-wrap: wrap;
-    /* align-items: center; */
     gap: 10px;
     padding: 20px;
     width: 100%;
     height: calc(100% - 100px);
+    position: relative;
+    /* Added to guarantee absolute center positioning works perfectly */
+    justify-content: center; 
+    align-items: center;
 }
 
+/* --- Optimized Elegant Bubble Theme --- */
 .bubble {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px; /* Slightly larger for better mobile/desktop hitting */
+    height: 44px;
     border-radius: 50%;
-    background-color: rgb(255, 0, 255);
-    font-weight: 500;
+    background-color: #344e41; /* Premium deep forest mint */
+    color: #ffffff; /* Crisp white text */
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.1s ease, background-color 0.2s ease; /* Smooth hover transition */
+    user-select: none;
 }
 
 .bubble:hover {
-    background-color: rgb(200, 0, 200);
+    background-color: #588157; /* Light sage green on hover */
     cursor: pointer;
+    transform: scale(1.08); /* Gives a tiny 'hover pop' feel */
+}
+
+/* --- Fixed & Enhanced Game Over Card --- */
+.game-over-card {
+    position: absolute;
+    /* Keeps it pinned directly in the center regardless of remaining bubbles */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.98);
+    padding: 40px 50px;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 340px;
+    z-index: 10;
+    
+    /* Fixed Animation Call */
+    animation: popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Fixed keyframe transition logic */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -35%) scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.trophy-icon {
+    font-size: 55px;
+    margin-bottom: 12px;
+    animation: float 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.game-over-card h1 {
+    font-size: 30px;
+    color: #1a252f;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.final-score-text {
+    font-size: 13px;
+    color: #8a99a6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.score-badge {
+    font-size: 52px;
+    font-weight: 800;
+    color: rgb(18, 119, 57);
+    margin-bottom: 30px;
+    background: rgba(18, 119, 57, 0.08);
+    padding: 4px 35px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: inset 0 2px 4px rgba(18, 119, 57, 0.05);
+}
+
+.restart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgb(72, 104, 72);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 32px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 20px rgba(72, 104, 72, 0.25);
+}
+
+.restart-btn:hover {
+    background-color: rgb(53, 79, 53);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(72, 104, 72, 0.35);
+}
+
+.restart-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(72, 104, 72, 0.25);
 }
