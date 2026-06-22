@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubble Shooter</title>
-    <script src="script.js"></script>
+    <title>Bubble Burst</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,23 +11,22 @@
         <div id="panel">
             <div id="ptop">
                 <dev class="elem">
-                    <h4>Score</h4>
-                    <div class="box"></div>
+                    <h2>Hit</h2>
+                    <div class="box" id="hit">0</div>
                 </dev>
                 <dev class="elem">
-                    <h4>Level</h4>
-                    <div class="box"></div>
+                    <h2>Timer</h2>
+                    <div class="box" id="timer">60</div>
                 </dev>
                 <dev class="elem">
-                    <h4>Time</h4>
-                    <div class="box"></div>
+                    <h2>Score</h2>
+                    <div class="box" id="score">0</div>
                 </dev>
-                <dev class="elem">
-                    <h4>Bubbles</h4>
-                    <div class="box"></div>
-                </dev>
+            </div>
+            <div id="pbtm">
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
